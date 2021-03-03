@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name='copyright' content=''>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Title Tag  -->
+    <title>Eshop - eCommerce HTML5 Template.</title>
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" th:href="@{/imagess/favicon.png}">
+	<!-- Web Font -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+	
+	<!-- StyleSheet -->
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" th:href="@{/csss/bootstrap.css}">
+	<!-- Magnific Popup -->
+    <link rel="stylesheet" th:href="@{/csss/magnific-popup.min.css}">
+	<!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/csss/font-awesome.css}">
+	<!-- Fancybox -->
+	<link rel="stylesheet" th:href="@{/csss/jquery.fancybox.min.css}">
+	<!-- Themify Icons -->
+    <link rel="stylesheet" th:href="@{/csss/themify-icons.css}">
+	<!-- Nice Select CSS -->
+    <link rel="stylesheet" th:href="@{/csss/niceselect.css}">
+	<!-- Animate CSS -->
+    <link rel="stylesheet" th:href="@{/csss/animate.css}">
+	<!-- Flex Slider CSS -->
+    <link rel="stylesheet" th:href="@{/csss/flex-slider.min.css}">
+	<!-- Owl Carousel -->
+    <link rel="stylesheet" th:href="@{/csss/owl-carousel.css}">
+	<!-- Slicknav -->
+    <link rel="stylesheet" th:href="@{/csss/slicknav.min.css}">
+
+	<!-- Eshop StyleSheet -->
+	<link rel="stylesheet" th:href="@{/csss/reset.css}">
+	<link rel="stylesheet" th:href="@{/csss/style.css}">
+    <link rel="stylesheet" th:href="@{/csss/responsive.css}">
+
+	
+	
+</head>
+<body class="js">
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<header class="header shop">
+		<div class="middle-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-md-7 col-12">
+						<ul class="list-main">
+							<li><i class="ti-user"></i> <a href="/signup">Sign up</a></li>
+							<li><i class="ti-power-off"></i><a href="/signin">Login</a></li>
+						</ul>
+					</div>
+					<div class="col-lg-2 col-md-3 col-12">
+						<div class="right-bar">
+							<!-- Search Form -->
+							<div class="sinlge-bar">
+								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+							</div>
+							<div class="sinlge-bar">
+								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+							</div>
+							<div class="sinlge-bar shopping">
+								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+								<!-- Shopping Item -->
+								<div class="shopping-item">
+									<div class="dropdown-cart-header">
+										<span>2 Items</span>
+										<a href="#">View Cart</a>
+									</div>
+									<ul class="shopping-list">
+										<li>
+											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+											<h4><a href="#">Woman Ring</a></h4>
+											<p class="quantity">1x - <span class="amount">$99.00</span></p>
+										</li>
+										<li>
+											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+											<h4><a href="#">Woman Necklace</a></h4>
+											<p class="quantity">1x - <span class="amount">$35.00</span></p>
+										</li>
+									</ul>
+									<div class="bottom">
+										<div class="total">
+											<span>Total</span>
+											<span class="total-amount">$134.00</span>
+										</div>
+										<a href="checkout.html" class="btn animate">Checkout</a>
+									</div>
+								</div>
+								<!--/ End Shopping Item -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+    <div class="product-area section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="product-info">
+						<div class="tab-content" id="myTabContent">
+							<div class="tab-pane fade show active" id="man" role="tabpanel">
+								<div class="tab-single">
+									<div class="row">
+										<div class="col-xl-3 col-lg-4 col-md-4 col-12" th:each="item : ${items}">
+											<div class="single-product">
+												<div class="product-img">
+													<a href="product-details.html">
+														<img class="default-img" th:attr="src=${item.imageUrl}" alt="#">
+													</a>
+													<div class="button-head">
+														<div class="product-action-2">
+															<a title="Add to cart" href="#">Add to cart</a>
+														</div>
+													</div>
+												</div>
+												<div class="product-content">
+													<h3  style="font-size: 1.5rem;"><a th:href="@{/product-details/{id}(id=${item.id})}"
+																					   th:text="${item.productName}">
+														Women Hot Collection</a></h3>
+													<div class="product-price">
+														<span th:text="${item.price}">$29.00</span>
+													</div>
+												</div>
+											</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	</div>
+	<footer class="footer">
+		<!-- Footer Top -->
+		<div class="footer-top section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer about">
+							<div class="logo">
+								<a href="#"><img th:src="@{imagess/logo2.png}" alt="#"></a>
+							</div>
+							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Information</h4>
+							<ul>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Faq</a></li>
+								<li><a href="#">Terms & Conditions</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Help</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Customer Service</h4>
+							<ul>
+								<li><a href="#">Payment Methods</a></li>
+								<li><a href="#">Money-back</a></li>
+								<li><a href="#">Returns</a></li>
+								<li><a href="#">Shipping</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer social">
+							<h4>Get In Tuch</h4>
+							<!-- Single Widget -->
+							<div class="contact">
+								<ul>
+									<li>NO. 342 - Asajon Way.</li>
+									<li>Sangotedo, Lagos Nigeria.</li>
+									<li>info@eshop.com</li>
+									<li>+032 3456 7890</li>
+								</ul>
+							</div>
+							<!-- End Single Widget -->
+							<ul>
+								<li><a href="#"><i class="ti-facebook"></i></a></li>
+								<li><a href="#"><i class="ti-twitter"></i></a></li>
+								<li><a href="#"><i class="ti-flickr"></i></a></li>
+								<li><a href="#"><i class="ti-instagram"></i></a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Footer Top -->
+		<div class="copyright">
+			<div class="container">
+				<div class="inner">
+					<div class="row">
+						<div class="col-lg-6 col-12">
+							<div class="left">
+								<p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved.</p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-12">
+							<div class="right">
+								<img th:src="@{/imagess/payments.png}" alt="#">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /End Footer Area -->
+
+	<!-- Jquery -->
+    <script th:src="@{/jss/jquery.min.js}"></script>
+    <script th:src="@{/jss/jquery-migrate-3.0.0.js}"></script>
+	<script th:src="@{/jss/jquery-ui.min.js}"></script>
+	<script th:src="@{/jss/popper.min.js}"></script>
+	<script th:src="@{/jss/bootstrap.min.js}"></script>
+	<script th:src="@{/jss/slicknav.min.js}"></script>
+	<script th:src="@{/jss/owl-carousel.js}"></script>
+	<script th:src="@{/jss/magnific-popup.js}"></script>
+	<script th:src="@{/jss/waypoints.min.js}"></script>
+	<script th:src="@{/jss/finalcountdown.min.js}"></script>
+	<script th:src="@{/jss/nicesellect.js}"></script>
+	<script th:src="@{/jss/flex-slider.js}"></script>
+	<script th:src="@{/jss/scrollup.js}"></script>
+	<script th:src="@{/jss/onepage-nav.min.js}"></script>
+	<script th:src="@{/jss/easing.js}"></script>
+	<script th:src="@{/jss/active.js}"></script>
+</body>
+</html>
