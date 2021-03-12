@@ -7,14 +7,16 @@ import com.lomari.sturdysuccotash.model.Product;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 public interface CustomerService {
-    public Iterable<Product> getProducts();
+    Iterable<Product> getProducts();
 
-    public Product getProduct(Long id) throws ProductNotFoundException;
+    Product getProduct(Long id) throws ProductNotFoundException;
 
     void signUpUser(SignupDTO signupDTO);
 
-    String loginUser(LoginDTO userDTO, HttpServletRequest req);
+
+//    String loginUser(LoginDTO user, Model model, HttpServletRequest request);
 }

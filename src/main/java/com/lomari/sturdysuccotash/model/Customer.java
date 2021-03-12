@@ -21,4 +21,5 @@ public class Customer {
     private String phoneNumber;
     @OneToMany
     private List<Product> cartItems;
+    private String role;
 }

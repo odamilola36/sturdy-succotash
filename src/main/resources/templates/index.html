@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -39,29 +39,54 @@
             <div class="row justify-content-center">
               <div class="col-md-8">
                 <div class="mb-4">
+
+                </div>
+                <div th:if="${param.error}" class="alert alert-danger align-self-center">
+                  Invalid username and password.
+                </div>
+                <div th:if="${param.logout}" class="alert alert-info align-self-center">
+                  You have been logged out.
+                </div>
                   <h3>Sign In to <strong>Lomari Store</strong></h3>
                   <p class="mb-4">
                     Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
                     consectetur adipisicing.
                   </p>
-                </div>
 <!--                <div class="alert alert-danger align-self-center" th:if="${result}== true"> Invalid Email and or Password</div>-->
 
-                <form action="#" th:action="@{/admin/home}" th:object="${user}" method="post">
+<!--                <form action="#" th:action="@{/login}" th:object="${user}" method="post">-->
+<!--                  <div class="form-group first">-->
+<!--                    <label for="username">Email</label>-->
+<!--                    <input type="text" class="form-control" th:field="*{emailAddress}" id="username" />-->
+<!--                  </div>-->
+<!--                  <div class="form-group last mb-4">-->
+<!--                    <label for="password">Password</label>-->
+<!--                    <input type="password" class="form-control" th:field="*{password}" id="password" />-->
+<!--                  </div>-->
+<!--                  <input-->
+<!--                    type="submit"-->
+<!--                    value="Log In"-->
+<!--                    class="btn text-white btn-block btn-primary"-->
+<!--                  />-->
+<!--                </form>-->
+                <form action="#" th:action="@{/login}" method="post">
                   <div class="form-group first">
                     <label for="username">Email</label>
-                    <input type="text" class="form-control" th:field="*{emailAddress}" id="username" />
+                    <input type="text" class="form-control" id="username" name="username" />
                   </div>
                   <div class="form-group last mb-4">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" th:field="*{password}" id="password" />
+                    <input type="password" class="form-control" id="password" name="password"/>
                   </div>
                   <input
-                    type="submit"
-                    value="Log In"
-                    class="btn text-white btn-block btn-primary"
+                          type="submit"
+                          value="Log In"
+                          class="btn text-white btn-block btn-primary"
                   />
                 </form>
+                <div class="bg-light"> <p>Don't have an account?</p>
+                  <a href="/register" >Register </a>
+                </div>
               </div>
             </div>
           </div>

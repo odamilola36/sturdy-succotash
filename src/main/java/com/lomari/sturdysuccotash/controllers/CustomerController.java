@@ -8,6 +8,8 @@ import com.lomari.sturdysuccotash.services.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +23,14 @@ public class CustomerController {
     private final Logger log = LoggerFactory.getLogger(CustomerController.class);
 
     private final CustomerService customerService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
+
 
     @GetMapping("/")
     public String getHomePage(Model model, HttpServletRequest req){
@@ -34,27 +39,27 @@ public class CustomerController {
         model.addAttribute("items", customerService.getProducts());
         return "home";
     }
-    @GetMapping("/signin")
+    @GetMapping("/signins")
     public String getSignin(Model model){
         model.addAttribute("login", new LoginDTO());
         return null;
     }
-    @PostMapping("/login")
+    @PostMapping("/logins")
     public String login(@ModelAttribute LoginDTO loginDTO, Model model, HttpServletRequest req){
         //TODO: on successful login, redirect to the previous page;
         String ref = req.getHeader("Referrer");
         return "redirect:" + ref;
     }
-    @GetMapping("/signup")
+    @GetMapping("/signupa")
     public String getSignup(Model model){
         model.addAttribute("user", new SignupDTO());
         return "sign-up";
     }
-    @PostMapping("/signup")
+    @PostMapping("/signupa")
     public String signup(@ModelAttribute SignupDTO signup, Model model, HttpServletRequest req){
-        customerService.signUpUser(signup);
-        String ref = req.getHeader("Referrer");
-        return "redirect:" + ref;
+                                customerService.signUpUser(signup);
+                                String ref = req.getHeader("Referrer");
+                                return "redirect:" + ref;
     }
     @GetMapping("/product-details/{id}")
     public String productDetails(@PathVariable("id") Long id, Model model){

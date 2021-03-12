@@ -21,4 +21,5 @@ public class Admin {
     private Long id;
     private String emailAddress;
     private String password;
+    private String role;
 }
